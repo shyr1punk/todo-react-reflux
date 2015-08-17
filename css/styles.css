@@ -1,0 +1,15 @@
+.view > .text {
+    display: inline;
+}
+
+.view > input {
+    display: none;
+}
+
+.edit > input {
+    display: inline;
+}
+
+.edit > .text {
+    display: none;
+}
