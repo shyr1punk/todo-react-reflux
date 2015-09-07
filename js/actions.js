@@ -1,6 +1,6 @@
 var TodoActions = Reflux.createActions([
+    "loadItems",
     "addItem",
     "deleteItem",
-    "editItemStart",
-    "editItemEnd"
+    "editItem"
 ]);

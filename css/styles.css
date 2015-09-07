@@ -6,10 +6,34 @@
     display: none;
 }
 
+.view > .save-button {
+    display: none;
+}
+
+.view > .delete-button {
+    display: inline;
+}
+
+.view > .edit-button {
+    display: inline;
+}
+
 .edit > input {
     display: inline;
 }
 
 .edit > .text {
+    display: none;
+}
+
+.edit > .save-button {
+    display: inline;
+}
+
+.edit > .delete-button {
+    display: none;
+}
+
+.edit > .edit-button {
     display: none;
 }

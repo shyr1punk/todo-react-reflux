@@ -1,7 +1,8 @@
 var TodoItem = React.createClass({
     getInitialState: function () {
         return {
-            className: "view"
+            className: "view",
+            text: this.props.text
         };
     },
     propTypes: {
@@ -15,10 +16,12 @@ var TodoItem = React.createClass({
         this.setState({
             className: "edit"
         });
-        TodoActions.editItemStart(this.props.index);
     },
     handleEditEnd: function() {
-        TodoActions.editItemEnd(this.props.index);
+        /*this.setState({
+            text: this.refs.input.getDOMNode().value
+        });*/
+        TodoActions.editItem(this.props.index, this.refs.input.getDOMNode().value);
     },
     render: function () {
         return (
@@ -26,12 +29,13 @@ var TodoItem = React.createClass({
                 <span>
                     {this.props.index}
                 </span>
-                <input type="text" value={this.props.text}></input>
+                <input ref="input" type="text" defaultValue={this.state.text}></input>
                 <span className="text">
-                    {this.props.text}
+                    {this.state.text}
                 </span>
-                <button onClick={this.handleDelete}>Del</button>
+                <button className="delete-button" onClick={this.handleDelete}>Del</button>
                 <button className="edit-button" onClick={this.handleEditStart}>Edit</button>
+                <button className="save-button" onClick={this.handleEditEnd}>Save</button>
             </div>
         );
     }

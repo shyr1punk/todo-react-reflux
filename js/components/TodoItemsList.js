@@ -1,5 +1,8 @@
 var TodoItemsList = React.createClass({
     mixins: [Reflux.connect(TodoStore)],
+    componentDidMount: function () {
+        TodoActions.loadItems();
+    },
     render: function () {
         var todos = this.state.items.map(function (item, i) {
             return <TodoItem text={item.text} index={i} key={i} />

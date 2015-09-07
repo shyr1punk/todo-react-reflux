@@ -1,9 +1,7 @@
 var TodoStore = Reflux.createStore({
-    data: {items: [
-        {text: "item one"},
-        {text: "item two"},
-        {text: "once more item"}
-    ]},
+    data: {
+        items: []
+    },
     getInitialState: function () {
         return this.data;
     },
@@ -19,7 +17,26 @@ var TodoStore = Reflux.createStore({
     onEditItemStart: function () {
         console.log("Start edit");
     },
-    onEditItemDone: function () {
+    onEditItem: function (value) {
+
         console.log("End edit");
+    },
+    onLoadItems: function () {
+        var self = this,
+            request = new XMLHttpRequest();
+        request.open('GET', 'api/data.json', true);
+
+        request.onload = function() {
+            if (this.status >= 200 && this.status < 400) {
+                self.data = JSON.parse(this.response);
+                self.trigger(self.data);
+            } else {
+                // We reached our target server, but it returned an error
+            }
+        };
+        request.onerror = function() {
+            // There was a connection error of some sort
+        };
+        request.send();
     }
 });
