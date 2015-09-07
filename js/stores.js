@@ -10,8 +10,13 @@ var TodoStore = Reflux.createStore({
         this.data.items.push({id: this.data.items[this.data.items.length-1].id + 1, text: itemText});
         this.trigger({data: this.data});
     },
-    onDeleteItem: function (index) {
-        this.data.items.splice(index, 1);
+    onDeleteItem: function (id) {
+        var self = this;
+        this.data.items.forEach(function (item, index) {
+            if (item.id === id) {
+                self.data.items.splice(index, 1);
+            }
+        });
         this.trigger({data: this.data});
     },
     onEditItemStart: function () {

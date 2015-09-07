@@ -9,7 +9,7 @@ var TodoItem = React.createClass({
         id: React.PropTypes.number.isRequired
     },
     handleDelete: function() {
-        TodoActions.deleteItem(this.props.index);
+        TodoActions.deleteItem(this.props.id);
     },
     handleEditStart: function() {
         this.setState({
