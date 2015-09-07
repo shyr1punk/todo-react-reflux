@@ -4,8 +4,8 @@ var TodoItemsList = React.createClass({
         TodoActions.loadItems();
     },
     render: function () {
-        var todos = this.state.items.map(function (item, i) {
-            return <TodoItem text={item.text} index={i} key={i} />
+        var todos = this.state.items.map(function (item) {
+            return <TodoItem text={item.text} id={item.id} key={item.id} />
         });
         return (
             <div>{todos}</div>

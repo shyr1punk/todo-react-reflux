@@ -7,7 +7,7 @@ var TodoItem = React.createClass({
     },
     propTypes: {
         text: React.PropTypes.string.isRequired,
-        index: React.PropTypes.number.isRequired
+        id: React.PropTypes.number.isRequired
     },
     handleDelete: function() {
         TodoActions.deleteItem(this.props.index);
@@ -27,7 +27,7 @@ var TodoItem = React.createClass({
         return (
             <div className={this.state.className}>
                 <span>
-                    {this.props.index}
+                    {this.props.id}
                 </span>
                 <input ref="input" type="text" defaultValue={this.state.text}></input>
                 <span className="text">
