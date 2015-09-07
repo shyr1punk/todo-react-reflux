@@ -17,9 +17,13 @@ var TodoStore = Reflux.createStore({
     onEditItemStart: function () {
         console.log("Start edit");
     },
-    onEditItem: function (value) {
-
-        console.log("End edit");
+    onEditItem: function (id, value) {
+        this.data.items.forEach(function (item) {
+            if (item.id === id) {
+                item.text = value;
+            }
+        });
+        this.trigger({data: this.data});
     },
     onLoadItems: function () {
         var self = this,
