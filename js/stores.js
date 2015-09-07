@@ -7,7 +7,7 @@ var TodoStore = Reflux.createStore({
     },
     listenables: [TodoActions],
     onAddItem: function (itemText) {
-        this.data.items.push({text: itemText});
+        this.data.items.push({id: this.data.items[this.data.items.length-1].id + 1, text: itemText});
         this.trigger({data: this.data});
     },
     onDeleteItem: function (index) {
